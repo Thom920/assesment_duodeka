@@ -5,9 +5,9 @@ import App from './App.jsx'
 import { GlobalStateProvider } from './state/GlobalState.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <StrictMode>
   <GlobalStateProvider>
     <App />
   </GlobalStateProvider>
-  </React.StrictMode>,
+  </StrictMode>,
 )
