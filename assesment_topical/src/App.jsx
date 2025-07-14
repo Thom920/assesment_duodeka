@@ -1,8 +1,8 @@
 import React from 'react';
-import {browserRouter as Router,
+import {BrowserRouter as Router,
     Routes,
     Route,
-    Navlink,
+    NavLink,
 } from 'react-router-dom';
 import Home_page from './pages/Home_page.jsx';
 import ToDo_page from './pages/ToDo_page.jsx';
@@ -15,10 +15,10 @@ function App() {
     <Router>
       <div>
         <nav>
-          <Navlink to="/">Home</Navlink>
-          <Navlink to="/todo">To-Do</Navlink>
-          <Navlink to="/about">About</Navlink>
-          <Navlink to="/contact">Contact</Navlink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/todo">To-Do</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </nav>
         <Routes>
           <Route path="/" element={<Home_page />} />
@@ -30,3 +30,5 @@ function App() {
     </Router>
   );
 }
+
+export default App;

@@ -8,3 +8,5 @@ function About_page() {
     </div>
   );
 }
+
+export default About_page;

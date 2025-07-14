@@ -7,3 +7,5 @@ function ToDo_page() {
     </div>
   );
 }
+
+export default ToDo_page;

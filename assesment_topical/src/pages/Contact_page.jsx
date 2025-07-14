@@ -8,3 +8,5 @@ function Contact_page() {
     </div>
   );
 }
+
+export default Contact_page;

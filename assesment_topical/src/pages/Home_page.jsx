@@ -8,3 +8,5 @@ function Home_page() {
     </div>
   );
 }
+
+export default Home_page;
