@@ -4,7 +4,10 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
     const [editText, setEditText] = useState(todo.text);
 
     const handleUpdate = () => {
-        if (editText.trim() === "") return;
+        if (editText.trim() === "") {
+            alert("De taak mag niet leeg zijn.");
+            return;
+        };
         updateText(todo.id, editText);
     }
 
