@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-function TodoItem({ todo,done , edit , deleteToDo }) {
-    const [edit_Text, setEditText] = useState(todo.text);
+function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
+    const [editText, setEditText] = useState(todo.text);
 
     const handleUpdate = () => {
-        edit(todo.id);
+        edit(todo.id, editText);
     }
 
     const handleKeyDown = (e) => {
@@ -29,7 +29,7 @@ function TodoItem({ todo,done , edit , deleteToDo }) {
                 </div>
             ) : (
                 <div>
-                    <span>
+                    <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
                         {todo.text}
                     </span>
                     <div>
