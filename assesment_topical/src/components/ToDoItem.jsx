@@ -4,6 +4,7 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
     const [editText, setEditText] = useState(todo.text);
 
     const handleUpdate = () => {
+        if (editText.trim() === "") return;
         updateText(todo.id, editText);
     }
 
@@ -11,7 +12,11 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
         if (e.key === "Enter") {
             handleUpdate();
         }
+        if (e.key === "Escape") {
+            edit(todo.id);
+        }
     }
+
 
     const handleDelete = () => {
         deleteToDo(todo.id);
@@ -21,7 +26,7 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
         <li>
             {todo.editing ? (
                 <div>
-                    <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onBlur={handleUpdate} onKeyDown={handleKeyDown}/>
+                    <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onKeyDown={handleKeyDown} autoFocus/>
                     <div>
                         <button onClick={handleUpdate}> Opslaan </button>
                         <button onClick={() => edit(todo.id)}> Annuleren </button>
