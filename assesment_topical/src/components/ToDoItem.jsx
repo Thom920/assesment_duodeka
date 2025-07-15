@@ -4,7 +4,7 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
     const [editText, setEditText] = useState(todo.text);
 
     const handleUpdate = () => {
-        edit(todo.id, editText);
+        updateText(todo.id, editText);
     }
 
     const handleKeyDown = (e) => {
