@@ -10,6 +10,26 @@ function ToDoList() {
             todos: todos.map(todo => todo.id === id ? { ...todo, completed: !todo.completed } : todo)
         });   
     }
+    const edit = (id) => {
+        GlobalState.set({
+            todos: todos.map(todo => todo.id === id ? { ...todo, editing: !todo.editing } : todo)
+        });
+    }
+
+    const updateText = (id, newText) => {
+        GlobalState.set({
+            todos: todos.map((todo) =>
+                todo.id === id ? { ...todo, text: newText, editing: false } : todo,
+            ),
+        });
+    }
+
+    const deleteToDo = (id) => {
+        GlobalState.set({
+            todos: todos.filter(todo => todo.id !== id)
+        });
+    }
+
     return (
     <div>
         <h1>Todo's</h1>
@@ -20,6 +40,9 @@ function ToDoList() {
                     key={todo.id}
                     todo={todo}
                     done={done}
+                    edit={edit}
+                    deleteToDo={deleteToDo}
+                    updateText={updateText}
                 />
             ))}
         </ul>

@@ -1,33 +1,45 @@
 import React, { useState } from "react";
 
-function TodoItem({ todo, onDelete, onUpdateText }) {
+function TodoItem({ todo,done , edit , deleteToDo }) {
     const [edit_Text, setEditText] = useState(todo.text);
 
     const handleUpdate = () => {
-        onUpdateText(todo.id, edit_Text.trim());
+        edit(todo.id);
     }
 
-    const handelKeyDown = (e) => {
+    const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             handleUpdate();
         }
     }
 
     const handleDelete = () => {
-        onDelete(todo.id);
+        deleteToDo(todo.id);
     }
 
     return (
-        <div className="todo-item">
-            <input
-                type="text"
-                value={edit_Text}
-                onChange={(e) => setEditText(e.target.value)}
-                onKeyDown={handelKeyDown}
-            />
-            <button onClick={handleUpdate}>Update</button>
-            <button onClick={handleDelete}>Delete</button>
-        </div>
+        <li>
+            {todo.editing ? (
+                <div>
+                    <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onBlur={handleUpdate} onKeyDown={handleKeyDown}/>
+                    <div>
+                        <button onClick={handleUpdate}> Opslaan </button>
+                        <button onClick={() => edit(todo.id)}> Annuleren </button>
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <span>
+                        {todo.text}
+                    </span>
+                    <div>
+                        <button onClick={() => done(todo.id)}> {todo.completed ? 'Ongedaan' : 'Voltooi'} </button>
+                        <button onClick={() => edit(todo.id)}> Bewerk </button>
+                        <button onClick={handleDelete}> Verwijder </button>
+                    </div>
+                </div>
+            )}
+        </li>
     );
 }
 
