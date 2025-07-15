@@ -25,15 +25,15 @@ function AddToDoForm() {
 
     return ( 
         <div>
-            <h1>Nieuwe Todo Toevoegen</h1>
+            <h1>Add new todo</h1>
             <form onSubmit={handleAddTodo}>
                 <input
                     type="text"
                     value={todoText}
                     onChange={(e) => setTodoText(e.target.value)}
-                    placeholder="Voeg een nieuwe Todo toe"
+                    placeholder="Add a new todo"
                 />
-                <button type="submit">Toevoegen</button>
+                <button type="submit">Add</button>
             </form>
         </div>
     );

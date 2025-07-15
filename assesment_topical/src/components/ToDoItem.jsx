@@ -5,7 +5,7 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
 
     const handleUpdate = () => {
         if (editText.trim() === "") {
-            alert("De taak mag niet leeg zijn.");
+            alert("The task cannot be empty");
             return;
         };
         updateText(todo.id, editText);
@@ -31,8 +31,8 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
                 <div>
                     <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onKeyDown={handleKeyDown} autoFocus/>
                     <div>
-                        <button onClick={handleUpdate}> Opslaan </button>
-                        <button onClick={() => edit(todo.id)}> Annuleren </button>
+                        <button onClick={handleUpdate}> save </button>
+                        <button onClick={() => edit(todo.id)}> cancel </button>
                     </div>
                 </div>
             ) : (
@@ -41,9 +41,9 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
                         {todo.text}
                     </span>
                     <div>
-                        <button onClick={() => done(todo.id)}> {todo.completed ? 'Ongedaan' : 'Voltooi'} </button>
-                        <button onClick={() => edit(todo.id)}> Bewerk </button>
-                        <button onClick={handleDelete}> Verwijder </button>
+                        <button onClick={() => done(todo.id)}> {todo.completed ? 'undone' : 'complete'} </button>
+                        <button onClick={() => edit(todo.id)}> Edit </button>
+                        <button onClick={handleDelete}> Delete </button>
                     </div>
                 </div>
             )}
