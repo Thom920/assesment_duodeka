@@ -32,6 +32,7 @@ function AddToDoForm() {
                     value={todoText}
                     onChange={(e) => setTodoText(e.target.value)}
                     placeholder="Add a new todo"
+                    maxLength={50}
                 />
                 <button type="submit">Add</button>
             </form>

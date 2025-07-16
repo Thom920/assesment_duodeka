@@ -39,7 +39,7 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
         <li>
             {todo.editing ? (
                 <div>
-                    <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onKeyDown={handleKeyDown} autoFocus/>
+                    <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onKeyDown={handleKeyDown} autoFocus maxLength={50}/>
                     <div>
                         <button onClick={handleUpdate}> save </button>
                         <button onClick={handleCancel}> cancel </button>
