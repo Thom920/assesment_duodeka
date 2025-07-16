@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
     const [editText, setEditText] = useState(todo.text);
+
+    // Reset editText wanneer edit mode wordt geopend/gesloten
+    useEffect(() => {
+        setEditText(todo.text);
+    }, [todo.editing, todo.text]);
 
     const handleUpdate = () => {
         if (editText.trim() === "") {
@@ -11,12 +16,17 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
         updateText(todo.id, editText);
     }
 
+    const handleCancel = () => {
+        setEditText(todo.text); // Reset naar originele tekst
+        edit(todo.id); // Sluit edit mode
+    }
+
     const handleKeyDown = (e) => {
         if (e.key === "Enter") {
             handleUpdate();
         }
         if (e.key === "Escape") {
-            edit(todo.id);
+            handleCancel();
         }
     }
 
@@ -32,7 +42,7 @@ function TodoItem({ todo,done , edit , deleteToDo , updateText }) {
                     <input type="text" value={editText} onChange={(e) => setEditText(e.target.value)} onKeyDown={handleKeyDown} autoFocus/>
                     <div>
                         <button onClick={handleUpdate}> save </button>
-                        <button onClick={() => edit(todo.id)}> cancel </button>
+                        <button onClick={handleCancel}> cancel </button>
                     </div>
                 </div>
             ) : (

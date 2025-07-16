@@ -13,19 +13,25 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div>
+        <div className='app-container'>
         <nav>
+          <div className='nav-container'>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/todo">To-Do</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
+          </div>
         </nav>
+        <main className='main-content'>
+        <div className='container'>
         <Routes>
           <Route path="/" element={<Home_page />} />
           <Route path="/todo" element={<ToDo_page />} />
           <Route path="/about" element={<About_page />} />
           <Route path="/contact" element={<Contact_page />} />
         </Routes>
+        </div>
+        </main>
       </div>
     </Router>
   );

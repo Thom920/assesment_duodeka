@@ -32,8 +32,12 @@ function ToDoList() {
 
     return (
     <div>
-        <h1>Todo's</h1>
-
+        <h2>Todo's</h2>
+        {todos.length === 0 ? (
+                <p>
+                    No more to-dos. Add a new one!
+                </p>
+            ) : (
         <ul>
             {todos.map((todo) => (
                 <TodoItem
@@ -46,6 +50,7 @@ function ToDoList() {
                 />
             ))}
         </ul>
+        )}
     </div>
 )
 }
